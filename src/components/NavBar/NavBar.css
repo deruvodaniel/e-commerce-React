@@ -23,6 +23,10 @@ a{
   font-size: 1.5rem;
 }
 
+a:hover{
+  color: #fff;
+}
+
 h1 {
   color: #fff;
 }
