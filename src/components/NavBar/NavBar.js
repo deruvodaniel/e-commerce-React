@@ -1,6 +1,7 @@
 import React from "react";
+import './NavBar.css'
 import logo from '../../assets/logo.png'
-import CartWidget from "../CartWidget";
+import CartWidget from "../CartWidget/CartWidget.js";
 import "./NavBar.css"
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';

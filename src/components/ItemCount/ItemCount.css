@@ -1,0 +1,37 @@
+.counter-container {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0;
+}
+
+.counter {
+  margin: 10px 0;
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.counter button {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+.counter span {
+  font-weight: 600;
+  color: #e48201;
+}
+
+.counter button svg{
+  fill: #fff;
+}
+
+.counter button svg:hover{
+  fill: #e48201;
+  cursor: pointer;
+}
+.add {
+  width: 100%;
+}
