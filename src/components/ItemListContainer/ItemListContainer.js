@@ -9,7 +9,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import ItemCount from "../ItemCount/ItemCount";
 
-const ItemListContainer = ({ stock, name, price }) => {
+const ItemListContainer = ({ stock, name, price, onAdd }) => {
 
   return (
     <div className="card-container">
@@ -32,7 +32,7 @@ const ItemListContainer = ({ stock, name, price }) => {
               MUSIC SHOP is the world's largest musical instruments retailer. Shop Guitars, Bass, Drums, Amps, DJ, Keyboards, Pro-Audio and more.
             </Typography>
             
-            <ItemCount stock={stock}/>
+            <ItemCount stock={stock} onAdd={onAdd}/>
 
           </CardContent>
         </CardActionArea>

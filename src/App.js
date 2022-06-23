@@ -38,25 +38,30 @@ const products = [
     id: 4,
     name: 'Cort Electroacustica',
     price: 590,
-    stock: 5,
+    stock: 0,
     img: 'acustica'
   },
   {
     id: 5,
     name: 'Squier Stratocaster',
     price: 868,
-    stock: 5
+    stock: 0
   },
   {
     id: 6,
     name: 'Squier Stratocaster',
     price: 868,
-    stock: 5
+    stock: 0
   },
 ]
 
 
 function App() {
+
+  const onAdd = () => {
+    alert('Product added to cart')
+  }
+
   return (
     <div className="App">
       <ThemeProvider theme={darkTheme}>
@@ -65,7 +70,7 @@ function App() {
           <Grid container spacing={2} columns={{ xs: 1, sm: 2, md: 4 }}>
             {products.map((item) => (
               <Grid item xs={1} md={1}>
-                <ItemListContainer className="card-item" key={item.id} stock={item.stock} name={item.name} price={item.price} img={item.img} />
+                <ItemListContainer className="card-item" key={item.id} stock={item.stock} name={item.name} price={item.price} img={item.img} onAdd={onAdd} />
               </Grid>
             ))}
           </Grid>

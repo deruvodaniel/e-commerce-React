@@ -4,9 +4,9 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import RemoveCircleOutlinedIcon from '@mui/icons-material/RemoveCircleOutlined';
 import Button from '@mui/material/Button';
 
-const ItemCount = ({ stock }) => {
+const ItemCount = ({ stock, onAdd }) => {
 
-  const [amount, setAmount] = useState(0)
+  const [amount, setAmount] = useState(0);
   const count = (value) => {
     const result = amount + value
     if (result <= stock && result >= 0) {
@@ -22,7 +22,7 @@ const ItemCount = ({ stock }) => {
         <button onClick={() => count(+1)}><AddCircleOutlinedIcon /></button>
       </div>
       <div className="add">
-        <Button variant="outlined">Add to Cart</Button>
+        <Button variant="outlined" onClick={onAdd}>Add to Cart</Button>
       </div>
     </div>
   );
