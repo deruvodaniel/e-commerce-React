@@ -69,8 +69,8 @@ function App() {
         <div className='card-list'>
           <Grid container spacing={2} columns={{ xs: 1, sm: 2, md: 4 }}>
             {products.map((item) => (
-              <Grid item xs={1} md={1}>
-                <ItemListContainer className="card-item" key={item.id} stock={item.stock} name={item.name} price={item.price} img={item.img} onAdd={onAdd} />
+              <Grid key={item.id} item xs={1} md={1}>
+                <ItemListContainer className="card-item" stock={item.stock} name={item.name} price={item.price} img={item.img} onAdd={onAdd} />
               </Grid>
             ))}
           </Grid>

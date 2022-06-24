@@ -17,9 +17,15 @@ const ItemCount = ({ stock, onAdd }) => {
   return (
     <div className="counter-container">
       <div className="counter">
-        <button onClick={() => count(-1)}><RemoveCircleOutlinedIcon /></button>
-        <span>Cant</span> {amount} | {stock} <span> Stock </span>
-        <button onClick={() => count(+1)}><AddCircleOutlinedIcon /></button>
+        <button onClick={() => count(-1)}>
+          <RemoveCircleOutlinedIcon />
+        </button>
+        <span>Cant</span>
+        {amount} | {stock}
+        <span> Stock </span>
+        <button onClick={() => count(+1)}>
+          <AddCircleOutlinedIcon />
+        </button>
       </div>
       <div className="add">
         <Button variant="outlined" onClick={onAdd}>Add to Cart</Button>
