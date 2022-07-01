@@ -1,16 +1,14 @@
 import React from "react";
-import './ItemListContainer.css'
-import guitars from '../../assets/guitars.jpg'
-import "./ItemListContainer.css"
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
-import ItemCount from "../ItemCount/ItemCount";
+import ItemCount from "../ItemCount/ItemCount.jsx";
 
-const ItemListContainer = ({ stock, name, price, onAdd }) => {
+const Item = ({ product, onAdd, initial }) => {
 
+  const {img, name, stock, price} = product
   return (
     <div className="card-container">
       <Card sx={{ maxWidth: 345 }}>
@@ -18,8 +16,8 @@ const ItemListContainer = ({ stock, name, price, onAdd }) => {
           <CardMedia
             component="img"
             height="140"
-            image={guitars}
-            alt="item"
+            image={Object.values(img)}
+            alt="img"
           />
           <CardContent>
             <Typography gutterBottom variant="h5" component="div">
@@ -31,8 +29,8 @@ const ItemListContainer = ({ stock, name, price, onAdd }) => {
             <Typography variant="body2" color="text.secondary">
               MUSIC SHOP is the world's largest musical instruments retailer. Shop Guitars, Bass, Drums, Amps, DJ, Keyboards, Pro-Audio and more.
             </Typography>
-            
-            <ItemCount stock={stock} onAdd={onAdd}/>
+
+            <ItemCount stock={stock} onAdd={onAdd} initial={initial} />
 
           </CardContent>
         </CardActionArea>
@@ -41,6 +39,4 @@ const ItemListContainer = ({ stock, name, price, onAdd }) => {
   );
 };
 
-
-export default ItemListContainer
-
+export default Item
