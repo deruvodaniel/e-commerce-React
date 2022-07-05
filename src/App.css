@@ -5,8 +5,10 @@
   min-height: 100vh;
   max-height: fit-content;
   box-sizing: border-box;
-  background-image: url('./assets/background.jpg');
-  background-repeat: no-repeat;
+  background-image: url('./assets/bg.svg');
+  background-position: top center;
+	background-size: cover;
+	background-attachment: fixed;
 }
 
 .App-header {

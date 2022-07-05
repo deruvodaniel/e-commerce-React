@@ -1,8 +1,8 @@
-import React, { useEffect, useState, CSSProperties } from "react";
+import React, { useEffect, useState } from "react";
 import './ItemListContainer.css'
 import ItemList from "../ItemList/ItemList.jsx";
 import {getData} from '../../mocks/fakeApi'
-import SyncLoader from "react-spinners/ClipLoader";
+import BounceLoader from "react-spinners/ClipLoader";
 
 
 const ItemListContainer = ({ greetings }) => {
@@ -26,17 +26,11 @@ const ItemListContainer = ({ greetings }) => {
     getProducts()
   }, [])
 
-  //Loader
-  const override: CSSProperties = {
-    display: "block",
-    margin: "0 auto",
-    borderColor: "#e48201",
-  };
 
   return (
     <div className="container">
     <h2>{greetings}</h2>
-    {loading ? <SyncLoader loading={loading} cssOverride={override} size={150} /> : <ItemList productList={productList}/>}
+    {loading ? <BounceLoader loading={loading}  color="#e48201" size={150} /> : <ItemList productList={productList}/>}
     </div>
   );
 };
