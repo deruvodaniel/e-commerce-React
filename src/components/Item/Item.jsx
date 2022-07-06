@@ -5,18 +5,19 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const Item = ({ product }) => {
 
-  const {img, name, price } = product
+  const {img, name, price, id } = product
   return (
     <div className="card-container">
-      <Card sx={{ maxWidth: 345 }}>
+      <Card sx={{ width: 300}}>
         <CardActionArea>
           <CardMedia
             component="img"
             height="140"
-            image={Object.values(img)}
+            image={img}
             alt="img"
           />
           <CardContent>
@@ -26,7 +27,9 @@ const Item = ({ product }) => {
             <Typography gutterBottom variant="h6" color="text.secondary">
               <div>${price}</div>
             </Typography>
-            <Button variant="outlined">Buy</Button>
+            <Link to={`/product/${id}`}>
+              <Button variant="outlined">Details</Button>
+            </Link>
           </CardContent>
         </CardActionArea>
       </Card>

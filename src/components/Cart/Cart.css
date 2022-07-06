@@ -1,0 +1,28 @@
+.cart-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2 {
+  color: #fff;
+}
+
+p {
+
+}
+
+.cart-logo {
+  width: 20%;
+  border-radius: 100%;
+  height: auto;
+  border: 2px solid #e48201;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  transition: all ease-in-out .2s;
+  margin: 5rem;
+}
+
+.cart-logo:hover{
+  transform: scale(1.1);
+}

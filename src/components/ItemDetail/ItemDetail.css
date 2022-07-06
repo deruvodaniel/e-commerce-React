@@ -2,9 +2,4 @@
 display: flex;
 align-items: center;
 justify-content: center;
-background-color: red;
 }
-
-.card-container > div{
-  background-color: red;
-  }

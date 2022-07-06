@@ -1,3 +1,6 @@
+.details-container {
+  padding: 3rem;
+}
 .card-container{
   display: flex;
   align-items: center;

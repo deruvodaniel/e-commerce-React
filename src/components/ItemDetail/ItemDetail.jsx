@@ -22,7 +22,7 @@ const ItemDetail = ({ product }) => {
           <CardMedia
             component="img"
             height="340"
-            image={Object.values(img)}
+            image={img}
             alt="img"
           />
           <CardContent>

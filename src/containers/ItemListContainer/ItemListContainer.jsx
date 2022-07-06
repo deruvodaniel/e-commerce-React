@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from "react";
 import './ItemListContainer.css'
-import ItemList from "../ItemList/ItemList.jsx";
-import {getData} from '../../mocks/fakeApi'
+import ItemList from "../../components/ItemList/ItemList.jsx";
+import {getData} from '../../mocks/fakeApi.jsx'
 import BounceLoader from "react-spinners/ClipLoader";
+import { useParams } from "react-router-dom";
 
 
 const ItemListContainer = ({ greetings }) => {
   const [productList, setProductList] = useState([])
   let [loading, setLoading] = useState(true)
 
+  const {categoryId} = useParams();
+
   //Promise
 
   const getProducts = async () => {
     try {
       const res = await getData
-      setProductList(res)
+      categoryId ? setProductList(res.filter(item => item.category === `${categoryId}`)) 
+      : setProductList(res);
     } catch(err){
       console.error(err)
     }finally{
@@ -24,7 +28,7 @@ const ItemListContainer = ({ greetings }) => {
 
   useEffect(()=> {
     getProducts()
-  }, [])
+  }, [categoryId])
 
 
   return (

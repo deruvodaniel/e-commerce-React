@@ -1,7 +1,5 @@
 import React from "react";
-import './NavBar.css'
-import logo from '../../assets/logo.png'
-import CartWidget from "../CartWidget/CartWidget.jsx";
+import './Footer.css'
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -11,7 +9,7 @@ import Menu from '@mui/material/Menu';
 import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import MenuItem from '@mui/material/MenuItem';
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const navItems = [
   // {
@@ -30,8 +28,7 @@ const navItems = [
     url: "./category/amps"
   },
 ]
-
-const NavBar = () => {
+const Footer = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
 
   const handleOpenNavMenu = (event) => {
@@ -46,7 +43,6 @@ const NavBar = () => {
     <AppBar position="static" mode="dark">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img className="logo" src={logo} alt="logo-img" />
           <Typography
             variant="h6"
             noWrap
@@ -130,16 +126,10 @@ const NavBar = () => {
               </NavLink>
             ))}
           </Box>
-
-          <Box sx={{ flexGrow: 0 }}>
-            <Link to='/cart'>
-              <CartWidget />
-            </Link>
-          </Box>
         </Toolbar>
       </Container>
     </AppBar>
   );
 };
 
-export default NavBar
+export default Footer
