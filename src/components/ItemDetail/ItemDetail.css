@@ -3,3 +3,7 @@ display: flex;
 align-items: center;
 justify-content: center;
 }
+
+.finish {
+  margin: 25px !important;
+}

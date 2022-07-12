@@ -1,17 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import './ItemDetail.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import ItemCount from "../ItemCount/ItemCount.jsx";
+import Button from '@mui/material/Button';
+import { Link } from 'react-router-dom';
 
 const ItemDetail = ({ product }) => {
+
+  let [finish, setFinish] = useState(false)
 
   const initial = 1;
 
   const onAdd = () => {
-    alert('Product added to cart')
+    alert('Product added to Cart')
+    setFinish(true)
   }
 
   const {img, name, stock, price, description} = product
@@ -36,8 +42,10 @@ const ItemDetail = ({ product }) => {
               {description}
             </Typography>
 
-            <ItemCount stock={stock} onAdd={onAdd} initial={initial} />
-
+            {finish ? 
+            <Link to='/cart'>
+              <Button className="finish" variant="outlined">Finish</Button>
+            </Link> : <ItemCount stock={stock} onAdd={onAdd} initial={initial} />}            
           </CardContent>
         </CardActionArea>
       </Card>
