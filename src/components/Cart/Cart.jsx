@@ -26,7 +26,7 @@ const Cart = () => {
             {products.map(item => <ListItem key={item.id} sx={{ bgcolor: 'background.paper' }}>
                 <ListItemAvatar>
                   <Avatar>
-                    <img src={item.img} />
+                    <img src={item.img} alt="img"/>
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText className="item-text" primary={item.name} secondary={`Cant: ${item.qty}`} />
