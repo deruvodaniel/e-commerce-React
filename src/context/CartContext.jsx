@@ -14,6 +14,8 @@ const CartCustomProvider = ({ children }) => {
       let stock = product.stock;
       if (qty < stock){
         qty += product.qty;
+        // let stockRest = product.stock - qty;
+        // console.log(stockRest);
       } else {
         alert('No more stock for this product')
       }
