@@ -8,8 +8,9 @@
 .counter {
   margin: 10px 0;
   display: flex;
-  width: 30%;
-  justify-content: space-around;
+  width: 40%;
+  min-width: fit-content;
+  justify-content: space-between;
   align-items: center;
   align-content: center;
 }
@@ -23,6 +24,7 @@
 .counter span {
   font-weight: 600;
   color: #e48201;
+  margin: 0 10px;
 }
 
 .counter button svg{

@@ -1,5 +1,6 @@
 .details-container {
   padding: 3rem;
+  min-height: 100vh;
 }
 .card-container{
   display: flex;

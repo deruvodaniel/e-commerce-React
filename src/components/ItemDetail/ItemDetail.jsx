@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import './ItemDetail.css';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,16 +8,23 @@ import { CardActionArea } from '@mui/material';
 import ItemCount from "../ItemCount/ItemCount.jsx";
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
+import { cartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
 
-  let [finish, setFinish] = useState(false)
+  let [finishBuy, setFinishBuy] = useState(false);
+  const { addProduct } = useContext(cartContext);
 
   const initial = 1;
 
-  const onAdd = () => {
-    alert('Product added to Cart')
-    setFinish(true)
+  const buyMore = () => {
+    setFinishBuy(false);
+  }
+
+  const onAdd = (count) => {
+    alert(`${count} ${product.name} added to cart`)
+    addProduct({...product, qty: count})
+    setFinishBuy(true);
   }
 
   const {img, name, stock, price, description} = product
@@ -42,10 +49,13 @@ const ItemDetail = ({ product }) => {
               {description}
             </Typography>
 
-            {finish ? 
-            <Link to='/cart'>
+            {finishBuy ? 
+            <div>
+              <Button className="finish" variant="outlined" onClick={buyMore}>Buy More</Button>
+              <Link to='/cart'>
               <Button className="finish" variant="outlined">Finish</Button>
-            </Link> : <ItemCount stock={stock} onAdd={onAdd} initial={initial} />}            
+            </Link>
+            </div> : <ItemCount stock={stock} onAdd={onAdd} initial={initial} />}            
           </CardContent>
         </CardActionArea>
       </Card>
