@@ -14,7 +14,7 @@ const ItemCount = ({ stock, onAdd, initial }) => {
     }
   }
 
-  
+
 
   return (
     <div className="counter-container">
@@ -31,7 +31,7 @@ const ItemCount = ({ stock, onAdd, initial }) => {
       </div>
       <div className="add">
 
-        {stock < 1 ? <h4>The product you selected has NO stock.<h5>Please select a product to buy!</h5></h4> : <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>}
+        {stock === 0 ? <h4>The product you selected has NO stock.<span>Please select a product to buy!</span></h4> : <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>}
         
       </div>
     </div>

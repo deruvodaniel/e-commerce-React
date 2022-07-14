@@ -14,8 +14,6 @@ const CartCustomProvider = ({ children }) => {
       let stock = product.stock;
       if (qty < stock){
         qty += product.qty;
-        // let stockRest = product.stock - qty;
-        // console.log(stockRest);
       } else {
         alert('No more stock for this product')
       }
@@ -50,6 +48,14 @@ const CartCustomProvider = ({ children }) => {
     } 
   };
 
+  const checkStock = (currProduct) => {
+    const match = products.find(item => item.id === currProduct.id);
+    if (match) {
+      const realStock = currProduct.stock - match.qty;
+      return realStock
+    } else return currProduct.stock;
+  };
+
   const isInCart = (id) => {
     return products.some(products => products.id === id);
   };
@@ -59,7 +65,7 @@ const CartCustomProvider = ({ children }) => {
   };
 
   return (
-    <Provider value={{products, addProduct, removeProduct, isInCart, qtyProducts, clearList}}>
+    <Provider value={{products, addProduct, removeProduct, checkStock, isInCart, qtyProducts, clearList}}>
       {children}
     </Provider>
   )

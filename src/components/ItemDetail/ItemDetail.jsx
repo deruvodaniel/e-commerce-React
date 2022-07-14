@@ -13,7 +13,7 @@ import { cartContext } from "../../context/CartContext";
 const ItemDetail = ({ product }) => {
 
   let [finishBuy, setFinishBuy] = useState(false);
-  const { addProduct } = useContext(cartContext);
+  const { addProduct, checkStock } = useContext(cartContext);
 
   const initial = 1;
 
@@ -27,7 +27,7 @@ const ItemDetail = ({ product }) => {
     setFinishBuy(true);
   }
 
-  const {img, name, stock, price, description} = product
+  const {img, name, price, description} = product
   return (
     <div className="card-container">
       <Card sx={{ maxWidth: 800 }}>
@@ -55,7 +55,7 @@ const ItemDetail = ({ product }) => {
               <Link to='/cart'>
               <Button className="finish" variant="outlined">Finish</Button>
             </Link>
-            </div> : <ItemCount stock={stock} onAdd={onAdd} initial={initial} />}            
+            </div> : <ItemCount stock={checkStock(product)} onAdd={onAdd} initial={initial} />}            
           </CardContent>
         </CardActionArea>
       </Card>
