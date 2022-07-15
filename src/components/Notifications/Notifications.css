@@ -1,0 +1,8 @@
+.notifications-container{
+  width: fit-content;
+  transition: all ease-in-out .3s;
+  position: absolute;
+  right: 0;
+  top: 8%;
+  z-index: 1;
+}

@@ -31,8 +31,11 @@ const ItemCount = ({ stock, onAdd, initial }) => {
       </div>
       <div className="add">
 
-        {stock === 0 ? <h4>The product you selected has NO stock.<span>Please select a product to buy!</span></h4> : <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>}
-        
+        {stock === 0 ? <div className="no-stock-msg">
+          <h4>The product you selected has NO stock.</h4>
+          <span>Please select a product to buy!</span>
+        </div> 
+        : <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>}
       </div>
     </div>
   );

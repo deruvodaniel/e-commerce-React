@@ -11,8 +11,16 @@
   width: 40%;
   min-width: fit-content;
   justify-content: space-between;
-  align-items: center;
   align-content: center;
+  background-color: #121212;
+  color: #fff;
+  padding: 25px;
+  border-radius: 5px;
+}
+
+.counter:hover {
+  background-color: #313131;
+  cursor: pointer;
 }
 
 .counter button {
@@ -38,3 +46,23 @@
 .add {
   width: 100%;
 }
+
+.no-stock-msg {
+  background-color: #121212;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.no-stock-msg h4 {
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+
+.no-stock-msg span {
+  color: grey;
+}
+

@@ -9,20 +9,26 @@ import ItemCount from "../ItemCount/ItemCount.jsx";
 import Button from '@mui/material/Button';
 import { Link } from 'react-router-dom';
 import { cartContext } from "../../context/CartContext";
+import Notifications from './../Notifications/Notifications.jsx';
 
 const ItemDetail = ({ product }) => {
 
   let [finishBuy, setFinishBuy] = useState(false);
+  let [showNotification, setShowNotification] = useState(false);
   const { addProduct, checkStock } = useContext(cartContext);
 
   const initial = 1;
 
   const buyMore = () => {
     setFinishBuy(false);
+    setShowNotification(false);
   }
 
   const onAdd = (count) => {
-    alert(`${count} ${product.name} added to cart`)
+    setShowNotification(true);
+    setTimeout(() => {
+      setShowNotification(false);
+    }, 3000);
     addProduct({...product, qty: count})
     setFinishBuy(true);
   }
@@ -30,6 +36,7 @@ const ItemDetail = ({ product }) => {
   const {img, name, price, description} = product
   return (
     <div className="card-container">
+      {showNotification ? <Notifications type={'success'} title={'Added to cart'} content={`${product.name}`}/> : ''}
       <Card sx={{ maxWidth: 800 }}>
         <CardActionArea>
           <CardMedia
@@ -48,17 +55,16 @@ const ItemDetail = ({ product }) => {
             <Typography variant="body2" color="text.secondary">
               {description}
             </Typography>
-
-            {finishBuy ? 
-            <div>
-              <Button className="finish" variant="outlined" onClick={buyMore}>Buy More</Button>
-              <Link to='/cart'>
-              <Button className="finish" variant="outlined">Finish</Button>
-            </Link>
-            </div> : <ItemCount stock={checkStock(product)} onAdd={onAdd} initial={initial} />}            
           </CardContent>
         </CardActionArea>
       </Card>
+      {finishBuy ? 
+        <div className="count-container">
+          <Button className="finish" variant="outlined" onClick={buyMore}>Buy More</Button>
+          <Link to='/cart'>
+          <Button className="finish" variant="outlined">Finish</Button>
+        </Link>
+        </div> : <ItemCount stock={checkStock(product)} onAdd={onAdd} initial={initial} />} 
     </div>
   );
 };
