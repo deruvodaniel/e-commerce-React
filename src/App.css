@@ -21,3 +21,32 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+::-webkit-scrollbar {
+	width: 6px;
+	height: 6px;
+}
+
+::-webkit-scrollbar-track:hover {
+		border: 1px solid rgb(184, 184, 184);
+		border-radius: #e48201;
+}
+
+::-webkit-scrollbar-track:hover {
+		border: 1px solid rgb(184, 184, 184);
+		border-radius: #e48201;
+
+}
+
+::-webkit-scrollbar-thumb {
+	background: rgba(51, 51, 51, 0.2);
+	border-radius: 30px;
+}
+
+::-webkit-scrollbar-thumb:vertical {
+  background-color: #254E70;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background: #313131;
+}

@@ -41,7 +41,7 @@ const ItemDetail = ({ product }) => {
         <CardActionArea>
           <CardMedia
             component="img"
-            height="340"
+            height="200"
             image={img}
             alt="img"
           />
