@@ -73,7 +73,7 @@ h4 {
   width: 100%;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 600px) {
   .cart__list {
     padding: 0px !important;
     background-color: transparent;
