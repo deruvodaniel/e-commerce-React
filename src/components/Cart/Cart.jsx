@@ -5,28 +5,35 @@ import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import './Cart.css'
-import { useNavigate  } from "react-router-dom";
 import Button from '@mui/material/Button';
 import { cartContext } from '../../context/CartContext';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { Link } from 'react-router-dom';
 
 
 const Cart = () => {
-  const {qtyProducts, products, removeProduct} = useContext(cartContext);
+  const {qtyProducts, products, removeProduct, clearList} = useContext(cartContext);
 
-  const navigate  = useNavigate();
+  const initialValue = 0; 
+  const total = products.map(item => item.price * item.qty)
+
+  const sum = total.reduce(
+    (previousValue, currentValue) => previousValue + currentValue,
+    initialValue
+  );
+
   return (
     <div className="cart-container">
       <h2>Cart</h2>
 
       {qtyProducts === 0 ? 
             <h4>The Cart is Empty, please select a product to buy!</h4>
-            : <List sx={{ width: '100%', maxWidth: 860 }}>
-            {products.map(item => <ListItem key={item.id} sx={{ bgcolor: 'background.paper' }}>
+            : <List className="cart__list" sx={{ width: '100%' }}>
+            {products.map(item => <ListItem className="cart__list--item" key={item.id} sx={{ bgcolor: 'background.paper' }}>
                 <ListItemAvatar>
                   <Avatar>
-                    <img src={item.img} alt="img"/>
+                    <img className="cart__list--img" src={item.img} alt="img"/>
                   </Avatar>
                 </ListItemAvatar>
                 <ListItemText className="item-text" primary={item.name} secondary={`Cant: ${item.qty}`} />
@@ -35,8 +42,14 @@ const Cart = () => {
                   <DeleteIcon />
                 </IconButton>
               </ListItem>)}
+              <div className="total">
+                <h3>Total: $ {sum}</h3>
+              </div>
             </List> }
-      <Button variant="outlined" onClick={() => navigate(-1)}>Go Back!</Button>
+      <div className="buttons-container">
+        <Link to="/"><Button variant="outlined">Go Back!</Button></Link>
+        <Button disabled={qtyProducts === 0 ? true : false} variant="outlined" onClick={() => clearList()}>Clear list<DeleteIcon /></Button>
+      </div>
     </div>
   )
 }

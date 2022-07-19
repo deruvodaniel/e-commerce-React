@@ -14,11 +14,11 @@ import MenuItem from '@mui/material/MenuItem';
 import { Link, NavLink } from 'react-router-dom';
 
 const navItems = [
-  // {
-  //   id: 1,
-  //   label: "Deals of the week",
-  //   url: "./category/offers"
-  // },
+  {
+    id: 1,
+    label: "All",
+    url: "/"
+  },
   {
     id: 2,
     label: "Guitars",

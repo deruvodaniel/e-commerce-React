@@ -19,7 +19,6 @@ const CartCustomProvider = ({ children }) => {
   const getQuantity = () => {
     let qty = 0;
     products.forEach(product => {
-      let stock = product.stock;
       qty += product.qty;
     });
     setQtyProducts(qty);
@@ -37,6 +36,8 @@ const CartCustomProvider = ({ children }) => {
       const aux = [...products];
       if(aux[index].qty <= product.stock){
         aux[index].qty += product.qty;
+      } else {
+        alert('No more Stock for this Item')
       }
       setProducts(aux);
     }else {
@@ -55,7 +56,10 @@ const CartCustomProvider = ({ children }) => {
   };
 
   const clearList = () => {
-    setProducts([]);
+    if (window.confirm("Delete all products from cart list?") === true) {
+      setProducts([]);
+      setQtyProducts(0);
+    }
   };
 
   return (
