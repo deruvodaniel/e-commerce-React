@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import {getData} from '../../mocks/fakeApi.jsx'
 import BounceLoader from "react-spinners/ClipLoader";
 import ItemDetail from '../../components//ItemDetail/ItemDetail.jsx'
 import './ItemDetailContainer.css'
 import { useParams } from "react-router-dom";
+import { db } from "../../firebase/firebase";
+import {doc, getDoc, collection} from "firebase/firestore"
 
 const ItemDetailContainer = () => {
   const [product, setProduct] = useState([])
@@ -13,15 +14,16 @@ const ItemDetailContainer = () => {
 
   //Promise
 
-  const getProduct = async () => {
-    try {
-      const res = await getData
-      setProduct(res.find(item => item.id === +productId))
-    } catch(err){
-      console.error(err)
-    }finally{
-      setLoading(false)
-    }
+  const getProduct = () => {
+    const productsCollection = collection(db, 'products');
+    const refDoc = doc(productsCollection, productId);
+    
+    getDoc(refDoc)
+    .then(result => {
+      setProduct(result.data());
+    })
+    .catch(err => console.error(err))
+    .finally(() => setLoading(false))
   }
 
   useEffect(()=> {
