@@ -126,7 +126,9 @@ const Footer = () => {
               </NavLink>
             ))}
           </Box>
+          2002 &copy; All rights reserved
         </Toolbar>
+        
       </Container>
     </AppBar>
   );

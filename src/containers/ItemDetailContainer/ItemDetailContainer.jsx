@@ -12,7 +12,7 @@ const ItemDetailContainer = () => {
 
   const {productId} = useParams();
 
-  //Promise
+  //Get Data from Firebase
 
   const getProduct = () => {
     const productsCollection = collection(db, 'products');

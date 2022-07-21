@@ -7,7 +7,6 @@ const CartCustomProvider = ({ children }) => {
   
   const [products, setProducts] = useState([]);
   const [qtyProducts, setQtyProducts] = useState(0);
-  console.log(products);
 
   const checkStock = (currProduct) => {
     const match = products.find(item => item.id === currProduct.id);

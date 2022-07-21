@@ -46,13 +46,13 @@ const ItemDetail = ({ product }) => {
             alt="img"
           />
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div">
+            <Typography gutterBottom variant="h5" component="div" className="product-name">
               {name} Details
             </Typography>
-            <Typography gutterBottom variant="h6" color="text.secondary">
-              <div>${price}</div>
+            <Typography gutterBottom variant="h6">
+              <div className="product-price">${price}</div>
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography variant="body2" color="text.secondary" className="product-description">
               {description}
             </Typography>
           </CardContent>

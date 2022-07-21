@@ -1,6 +1,7 @@
 .details-container {
   padding: 3rem;
-  min-height: 100vh;
+  min-height: 90vh;
+  max-height: 100%;
 }
 .card-container{
   display: flex;

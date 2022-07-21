@@ -18,25 +18,28 @@ const ItemCount = ({ stock, onAdd, initial }) => {
 
   return (
     <div className="counter-container">
-      <div className="counter">
-        <button onClick={() => count(-1)}>
-          <RemoveCircleOutlinedIcon />
-        </button>
-        <span>Cant</span>
-        {stock < 1 ? `${stock}` : `${amount}` } | {stock}
-        <span> Stock </span>
-        <button onClick={() => count(+1)}>
-          <AddCircleOutlinedIcon />
-        </button>
-      </div>
+      {stock === 0 ? 
       <div className="add">
-
-        {stock === 0 ? <div className="no-stock-msg">
-          <h4>The product you selected has NO stock.</h4>
-          <span>Please select a product to buy!</span>
-        </div> 
-        : <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>}
+      <div className="no-stock-msg">
+        <h4>The product you have selected is out of stock.</h4>
+        <span>Please select another product to buy!</span>
+      </div> 
+    </div> 
+    : <div>
+        <div className="counter">
+            <button onClick={() => count(-1)}>
+              <RemoveCircleOutlinedIcon />
+            </button>
+            <span>Cant</span>
+            {stock < 1 ? `${stock}` : `${amount}` } | {stock}
+            <span> Stock </span>
+            <button onClick={() => count(+1)}>
+              <AddCircleOutlinedIcon />
+            </button>
+          </div>
+          <Button onClick={() => onAdd(amount)} variant="outlined">Add to Cart</Button>
       </div>
+    }
     </div>
   );
 };

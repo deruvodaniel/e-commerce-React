@@ -6,6 +6,26 @@ justify-content: center;
 height: 100%;
 }
 
+
 .finish {
   margin: 25px !important;
+}
+
+.product-name{
+  color: #e48201;
+}
+
+.product-price{
+  color: #fff;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .product-name{
+    font-size: 18px !important;
+  }
+
+  .product-description{
+    font-size: 12px !important;
+  }
 }

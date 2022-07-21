@@ -12,7 +12,7 @@ const ItemListContainer = ({ greetings }) => {
   let [loading, setLoading] = useState(true)
   const {categoryId} = useParams();
 
-  //Promise
+  //Get data from Firebase
 
   const getProducts = () => {
     const q = categoryId 
