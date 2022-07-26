@@ -1,0 +1,26 @@
+.success-container {
+  min-width: fit-content;
+  height: fit-content;
+  padding: 30px;
+  border-radius: 15px;
+  background-color: #00000046;
+}
+
+.success-container span {
+  color: #e48201;
+}
+
+.success-container p {
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+@media only screen and (max-width: 600px) {
+  .success-container p {
+    font-size: 1.2rem;
+  }
+  .success-container h3 {
+    font-size: 1rem;
+  }
+}

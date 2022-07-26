@@ -1,0 +1,40 @@
+.form-container{
+  display: flex;
+  flex-direction: column;
+  margin: 0 3rem;
+  max-height: 100%;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.form-container h3, h5 {
+  color: #fff;
+}
+
+.form-container h5 {
+  color: #e48201;
+  margin-top: 15px;
+}
+
+.form-container button {
+  margin-top: 25px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #00000046;
+  margin: 5% 0;
+  height: 450px;
+  padding: 10px 25px 25px 25px;
+  border-radius: 15px;
+  box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+}
+
+form input {
+  background: transparent;
+}
+
+

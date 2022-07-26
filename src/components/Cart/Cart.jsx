@@ -10,14 +10,13 @@ import { cartContext } from '../../context/CartContext';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Link } from 'react-router-dom';
-import { db } from '../../firebase/firebase';
-import { collection, addDoc, serverTimestamp, doc, updateDoc } from 'firebase/firestore';
 import MonetizationOnIcon from '@mui/icons-material/MonetizationOn';
+import UserForm from '../UserForm/UserForm.jsx'
 
 
 const Cart = () => {
-  const [sellId, setSellId] = useState('')
   const {qtyProducts, products, removeProduct, clearList} = useContext(cartContext);
+  let [finished, setfinished] = useState(false)
 
   //Total Calculation
   const initialValue = 0; 
@@ -27,44 +26,16 @@ const Cart = () => {
     initialValue
   );
 
-  // Customer's data
-  const userData = {
-    name: 'Juan',
-    lastName: 'Perez',
-    tel: 15654987654,
-    email: 'juanperez@gmail.com',
-    cardNumber: 46798465434
-  }
-
   const checkout = () => {
-    const sellsCollection = collection(db, 'ventas');
-    addDoc(sellsCollection, {
-      userData,
-      items: products,
-      date: serverTimestamp(),
-      total: sum
-    })
-    .then((result) => {
-      setSellId(result.id);
-    })
-
-    // const updateCollection = doc(db, 'products', ``);
-    // updateDoc(updateCollection, {stock: 100})
-
-    products.forEach((item) => {
-      const updateCollection = doc(db, 'products', `${item.id}`);
-      updateDoc(updateCollection, {stock: (item.stock - item.qty)})
-    })
+    setfinished(true);
   }
-
-  // para loguear resultado y mostrar al usuario
-  console.log(sellId);
 
   return (
     <div className="cart-container">
       <h2>Cart</h2>
-
-      {qtyProducts === 0 ? 
+      <div className='cart-content'>
+        <div className='purchase-content'>
+        {qtyProducts === 0 ? 
             <h4>The Cart is Empty, please select a product to buy!</h4>
             : <List className="cart__list" sx={{ width: '100%' }}>
             {products.map(item => <ListItem className="cart__list--item" key={item.id} sx={{ bgcolor: 'background.paper' }}>
@@ -81,12 +52,17 @@ const Cart = () => {
               </ListItem>)}
               <div className="total">
                 <h3>Total: $ {sum}</h3>
-                <Button variant="outlined" onClick={() => checkout()}>BUY!<MonetizationOnIcon /></Button>
+                {finished ? '' : <Button disabled={finished} variant="outlined" onClick={() => checkout()}>BUY!<MonetizationOnIcon /></Button>}
               </div>
             </List> }
-      <div className="buttons-container">
-        <Link to="/"><Button variant="outlined">Go Back!</Button></Link>
-        <Button disabled={qtyProducts === 0 ? true : false} variant="outlined" onClick={() => clearList()}>Clear list<DeleteIcon /></Button>
+            <div className="buttons-container">
+              <Link to="/"><Button variant="outlined">Go Back!</Button></Link>
+              <Button disabled={(qtyProducts === 0 || finished) ? true : false} variant="outlined" onClick={() => clearList()}>Clear list<DeleteIcon /></Button>
+            </div>
+        </div>
+        <div className='user-data-form'>
+        {finished ? <UserForm finished={finished}/> : ''}
+        </div>
       </div>
     </div>
   )
