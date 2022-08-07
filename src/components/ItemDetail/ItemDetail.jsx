@@ -12,9 +12,10 @@ import { cartContext } from "../../context/CartContext";
 import Notifications from './../Notifications/Notifications.jsx';
 
 const ItemDetail = ({ product }) => {
+  const {img, name, price, description} = product
 
-  let [finishBuy, setFinishBuy] = useState(false);
-  let [showNotification, setShowNotification] = useState(false);
+  const [finishBuy, setFinishBuy] = useState(false);
+  const [showNotification, setShowNotification] = useState(false);
   const { addProduct, checkStock } = useContext(cartContext);
 
   const initial = 1;
@@ -33,7 +34,6 @@ const ItemDetail = ({ product }) => {
     setFinishBuy(true);
   }
 
-  const {img, name, price, description} = product
   return (
     <div className="card-container">
       {showNotification ? <Notifications type={'success'} title={'Added to cart'} content={`${product.name}`}/> : ''}

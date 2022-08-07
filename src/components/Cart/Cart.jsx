@@ -16,7 +16,7 @@ import UserForm from '../UserForm/UserForm.jsx'
 
 const Cart = () => {
   const {qtyProducts, products, removeProduct, clearList} = useContext(cartContext);
-  let [finished, setfinished] = useState(false)
+  const [finished, setfinished] = useState(false)
 
   //Total Calculation
   const initialValue = 0; 

@@ -6,14 +6,15 @@ import Typography from '@mui/material/Typography';
 import './Item.css';
 import { CardActionArea } from '@mui/material';
 import { Link } from 'react-router-dom';
+import Chip from '@mui/material/Chip'
 
 const Item = ({ product }) => {
 
-  const {img, name, price, id } = product
+  const {img, name, price, id, stock } = product
   return (
     <div className="card-container">
       <Link to={`/product/${id}`}>
-        <Card sx={{ width: 250}}>
+        <Card sx={{ width: 250, height: 280} }>
           <CardActionArea>
             <CardMedia
               component="img"
@@ -29,8 +30,8 @@ const Item = ({ product }) => {
                 <div>${price}</div>
               </Typography> 
               <Typography gutterBottom variant="p" color="text.secondary">
-                <div className="details">Details</div>
-              </Typography>                
+                {stock < 1 ? <Chip label="No Stock" /> : <div className="details">Details</div>}
+              </Typography>           
             </CardContent>
           </CardActionArea>
         </Card>

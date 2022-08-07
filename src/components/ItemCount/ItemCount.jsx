@@ -9,7 +9,7 @@ const ItemCount = ({ stock, onAdd, initial }) => {
   const [amount, setAmount] = useState(initial);
   const count = (value) => {
     const result = amount + value
-    if (result <= stock && result >= 0) {
+    if (result <= stock && result > 0) {
       setAmount(amount + value)
     }
   }

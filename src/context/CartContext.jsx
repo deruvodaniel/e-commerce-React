@@ -1,10 +1,10 @@
 import React, { createContext, useState, useEffect} from "react";
+import Swal from 'sweetalert2'
 
 export const cartContext = createContext();
 const { Provider } = cartContext;
 
 const CartCustomProvider = ({ children }) => {
-  
   const [products, setProducts] = useState([]);
   const [qtyProducts, setQtyProducts] = useState(0);
 
@@ -46,9 +46,29 @@ const CartCustomProvider = ({ children }) => {
   };
 
   const removeProduct = (id) => {
-    if (window.confirm("Delete product from cart list?") === true) {
-      setProducts(products.filter(product => product.id !== id));
-    } 
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      background: '#121212',
+      textColor: '#fff',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#e48201',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setProducts(products.filter(product => product.id !== id));
+        Swal.fire({
+          title: 'Deleted',
+          text: "Your product has been deleted from the cart list.",
+          icon: 'success',
+          background: '#121212',
+          confirmButtonColor: '#e48201',
+        }
+        )
+      }
+    }) 
   };
 
   const isInCart = (id) => {
@@ -56,10 +76,29 @@ const CartCustomProvider = ({ children }) => {
   };
 
   const clearList = () => {
-    if (window.confirm("Delete all products from cart list?") === true) {
-      setProducts([]);
-      setQtyProducts(0);
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: "You won't be able to revert this!",
+      icon: 'warning',
+      showCancelButton: true,
+      background: '#121212',
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#e48201',
+      confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setProducts([]);
+        setQtyProducts(0);
+        Swal.fire({
+          title: 'Deleted',
+          text: "All Your products have been deleted from the cart list.",
+          icon: 'success',
+          background: '#121212',
+          confirmButtonColor: '#e48201',
+        }
+        )
+      }
+    }) 
   };
 
   return (

@@ -9,7 +9,7 @@ import {getDocs, collection, query, where} from "firebase/firestore"
 
 const ItemListContainer = ({ greetings }) => {
   const [productList, setProductList] = useState([])
-  let [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(true)
   const {categoryId} = useParams();
 
   //Get data from Firebase

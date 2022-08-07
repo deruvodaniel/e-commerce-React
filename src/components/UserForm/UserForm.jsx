@@ -13,7 +13,7 @@ const UserForm = () => {
   const [sellId, setSellId] = useState('');
   const { products } = useContext(cartContext);
   const [showModal, setShowModal] = useState(false);
-  let [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [userData, setUserData] = useState({
     name: '',
