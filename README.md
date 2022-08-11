@@ -17,3 +17,5 @@ how to run it
 3.- Position yourself in the root folder of the project and using the command line, terminal or console type 'npm install' (without the quotes), this will install all the necessary dependencies to run the project.
 
 4.- Once the previous step is finished, write 'npm start', this will make the project visible in the browser at http://localhost:3000
+
+5.- Enviroment variables: https://drive.google.com/file/d/1Qv8FbDhe0U32E_-CBvCEVmWRhPLb5pZ1/view?usp=sharing
