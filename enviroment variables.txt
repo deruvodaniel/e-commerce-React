@@ -1,0 +1,6 @@
+REACT_APP_apiKey=AIzaSyB1MNAMtvpcEReLO5i9unywNgCPgOhMoyE
+REACT_APP_authDomain=music-store-react-ecommerce.firebaseapp.com
+REACT_APP_projectId=music-store-react-ecommerce
+REACT_APP_storageBucket=music-store-react-ecommerce.appspot.com
+REACT_APP_messagingSenderId=722060879264
+REACT_APP_appId=1:722060879264:web:8d1b0b501a86c9da1a30c5
